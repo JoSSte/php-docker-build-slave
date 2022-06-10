@@ -22,6 +22,11 @@ RUN apt-get install -qy openjdk-8-jdk
 # install PHP 7.4 & mysql
 RUN apt-get install -qy apache2 php7.4-curl php7.4-gd apache2 mysql-server php7.4 unzip php7.4-mysql php7.4-mbstring php7.4-zip php-xdebug php-pear*
 
+# install composer
+RUN wget -O composer-setup.php https://getcomposer.org/installer
+RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+RUN composer self-update
+
 # Cleanup old packages
 RUN apt-get -qy autoremove
 # Add user jenkins to the image
@@ -29,6 +34,7 @@ RUN adduser --disabled-password --gecos "" jenkins
 
 # Copy authorized keys
 COPY ssh/authorized_keys /home/jenkins/.ssh/authorized_keys
+COPY resources/xdebug.ini /etc/php/7.4/mods-available/xdebug.ini
 
 RUN chown -R jenkins:jenkins /home/jenkins/.ssh/
 
