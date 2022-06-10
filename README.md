@@ -18,3 +18,9 @@ Because I also deploy from these images i have som ssh related files in the [ssh
 To build the image run `docker-compose build`
 
 I prefer not having to remember a lot of parameters and so on, so there is both a [Dockerfile](Dockerfile) and a [docker-compose.yml](docker-compose.yml) the yml file is solely there to tag and name the image correctly, if you choose to just keep the image on your docker host instead of forking it and putting it in github.
+
+## Useful tidbits
+
+### Adding host keys to the known_hosts explicitly
+instead of digging though an existing known_hosts, just execute this command:  
+`ssh-keyscan -H remote.server.dk >> ssh/known_hosts`
