@@ -3,4 +3,4 @@ version:  '2'
 services:
   man:
     build: .
-    image: josste/php-docker-build-slave:v7
+    image: josste/php-docker-build-slave:v8
