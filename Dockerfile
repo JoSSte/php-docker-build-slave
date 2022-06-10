@@ -20,7 +20,10 @@ RUN apt-get install -qy openssh-server && \
 # install java for Jenkins
 RUN apt-get install -qy openjdk-11-jdk
 
-# install PHP 7.4 & mysql
+# install rsync
+RUN apt-get install -qy rsync
+
+# install PHP 8.1 & mysql
 RUN apt-get install -qy php8.1-curl php8.1-gd apache2 mysql-server php8.1 unzip php8.1-mysql php8.1-zip php8.1-mbstring php-xdebug php-pear*
 
 # install composer
