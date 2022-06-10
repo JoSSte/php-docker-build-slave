@@ -40,12 +40,10 @@ RUN adduser --disabled-password --gecos "" jenkins
 # Copy authorized_keys & known_hosts & private key for ssh deploys
 COPY ssh/authorized_keys /home/jenkins/.ssh/authorized_keys
 COPY ssh/known_hosts /home/jenkins/.ssh/known_hosts
-COPY ssh/id_rsa /home/jenkins/.ssh/id_rsa
 
 COPY resources/xdebug.ini /etc/php/8.1/mods-available/xdebug.ini
 
 RUN chown -R jenkins:jenkins /home/jenkins/.ssh/
-RUN chmod 600 /home/jenkins/.ssh/id_rsa
 
 # Standard SSH port
 EXPOSE 22
