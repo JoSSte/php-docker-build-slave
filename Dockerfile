@@ -11,6 +11,15 @@ RUN apt-get autoremove
 #--fix-missing
 RUN apt-get clean
 
+RUN cat /etc/apt/sources.list
+
+# hirsute is end-of-life. replace archive with old-releases:
+RUN sed -i "s|archive.ubuntu|old-releases.ubuntu|" /etc/apt/sources.list
+# EOL releases do not get security updates:
+RUN sed -i "s|deb http://security.ubuntu.com|#deb http://security.ubuntu.com|" /etc/apt/sources.list
+
+RUN cat /etc/apt/sources.list
+
 # Make sure the package repository is up to date.
 RUN apt-get update && \
     apt-get -qy full-upgrade && \
