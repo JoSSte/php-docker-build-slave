@@ -24,3 +24,4 @@ I prefer not having to remember a lot of parameters and so on, so there is both 
 ### Adding host keys to the known_hosts explicitly
 instead of digging though an existing known_hosts, just execute this command:  
 `ssh-keyscan -H remote.server.dk >> ssh/known_hosts`
+There is a pitfall - a malicious actor may do a man-in-the-middle attack. by doing this in the image creation, and not in the jenkinsfile, My thought is that the risk is smaller, since we do it less often., this does require rebuilding the image when the keys change.
