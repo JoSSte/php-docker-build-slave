@@ -21,8 +21,6 @@ RUN apt-get install -qy openssh-server && \
     sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd && \
     mkdir -p /var/run/sshd 
 
-RUN java -version
-
 # install java for Jenkins
 RUN apt-get install -qy openjdk-11-jdk
 
