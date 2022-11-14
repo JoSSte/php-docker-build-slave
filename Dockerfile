@@ -21,8 +21,13 @@ RUN apt-get install -qy openssh-server && \
     sed -i 's|session    required     pam_loginuid.so|session    optional     pam_loginuid.so|g' /etc/pam.d/sshd && \
     mkdir -p /var/run/sshd 
 
+RUN java -version
+
 # install java for Jenkins
 RUN apt-get install -qy openjdk-11-jdk
+
+RUN ln -s /usr/lib/jvm/java-11-openjdk-amd64/ /home/jenkins/jdk
+RUN chown jenkins:jenkins /home/jenkins/jdk
 
 # install rsync
 RUN apt-get install -qy rsync
