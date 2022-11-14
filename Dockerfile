@@ -24,9 +24,6 @@ RUN apt-get install -qy openssh-server && \
 # install java for Jenkins
 RUN apt-get install -qy openjdk-11-jdk
 
-RUN ln -s /usr/lib/jvm/java-11-openjdk-amd64/ /home/jenkins/jdk
-RUN chown jenkins:jenkins /home/jenkins/jdk
-
 # install rsync
 RUN apt-get install -qy rsync
 
@@ -43,6 +40,11 @@ RUN apt-get -qy autoremove
 
 # Add user jenkins to the image
 RUN adduser --disabled-password --gecos "" jenkins 
+
+# fix java
+
+RUN ln -s /usr/lib/jvm/java-11-openjdk-amd64/ /home/jenkins/jdk
+RUN chown jenkins:jenkins /home/jenkins/jdk
 
 # Copy authorized_keys & known_hosts & private key for ssh deploys
 COPY ssh/authorized_keys /home/jenkins/.ssh/authorized_keys
