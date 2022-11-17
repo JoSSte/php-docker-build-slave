@@ -56,8 +56,8 @@ RUN ssh-keyscan -H bitbucket.org >> /home/jenkins/.ssh/known_hosts \
     ssh-keyscan -H github.com >> /home/jenkins/.ssh/known_hosts \
     chown -R jenkins:jenkins /home/jenkins/.ssh/
 
-
 # Standard SSH port
 EXPOSE 22
 
+#Jenkins needs the ssh service to be running
 CMD ["/usr/sbin/sshd", "-D"]
