@@ -15,7 +15,8 @@ Because I also deploy from these images i have som ssh related files in the [ssh
 
 ### Create
 
-To build the image run `docker-compose build`
+To build the image run `docker-compose build`  
+(`docker-compose up --build -d` can also be used...)  
 
 I prefer not having to remember a lot of parameters and so on, so there is both a [Dockerfile](Dockerfile) and a [docker-compose.yml](docker-compose.yml) the yml file is solely there to tag and name the image correctly, if you choose to just keep the image on your docker host instead of forking it and putting it in github.
 
