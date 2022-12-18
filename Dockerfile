@@ -30,7 +30,7 @@ RUN apt-get install -qy openssh-server && \
     mkdir -p /var/run/sshd
 
 # install java for Jenkins
-RUN apt-get install -qy openjdk-8-jdk
+RUN apt-get install -qy openjdk-11-jdk
 
 # install PHP 7.4 & mysql
 RUN apt-get install -qy apache2 php7.4-curl php7.4-gd apache2 mysql-server php7.4 unzip php7.4-mysql php7.4-mbstring php7.4-zip php-xdebug php-pear*

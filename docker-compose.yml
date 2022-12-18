@@ -4,3 +4,5 @@ services:
   man:
     build: .
     image: josste/php-docker-build-slave:v7
+    stdin_open: true
+    tty: true
