@@ -3,6 +3,6 @@ version:  '2'
 services:
   man:
     build: .
-    image: josste/php-docker-build-slave:v8
+    image: josste/php-docker-build-slave:v8.5
     stdin_open: true
     tty: true

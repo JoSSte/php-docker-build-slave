@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:26.10
 
 LABEL maintainer="Jonas Stevnsvig <jonas@stevnsvig.com>"
 
@@ -22,13 +22,13 @@ RUN apt-get install -qy openssh-server && \
     mkdir -p /var/run/sshd 
 
 # install java for Jenkins
-RUN apt-get install -qy openjdk-11-jdk
+RUN apt-get install -qy openjdk-21-jdk
 
 # install rsync
 RUN apt-get install -qy rsync
 
 # install PHP 8.1 & mysql
-RUN apt-get install -qy php8.1-curl php8.1-gd apache2 mysql-server php8.1 unzip php8.1-mysql php8.1-zip php8.1-mbstring php-xdebug php-pear*
+RUN apt-get install -qy php8.5-curl php8.5-gd apache2 mysql-server php8.5 unzip php8.5-mysql php8.5-zip php8.5-mbstring php-xdebug php-pear*
 
 # install composer
 RUN wget -O composer-setup.php https://getcomposer.org/installer && \
@@ -43,7 +43,7 @@ RUN adduser --disabled-password --gecos "" jenkins
 
 # fix java
 
-RUN ln -s /usr/lib/jvm/java-11-openjdk-amd64/ /home/jenkins/jdk && \
+RUN ln -s /usr/lib/jvm/java-21-openjdk-amd64/ /home/jenkins/jdk && \
     chown jenkins:jenkins /home/jenkins/jdk
 
 # Copy authorized_keys & known_hosts & private key for ssh deploys
